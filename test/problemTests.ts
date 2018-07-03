@@ -3,13 +3,10 @@ import chai from "chai";
 import chaiAsPromised from "chai-as-promised";
 import "mocha";
 import moment from "moment";
-import Web3 from "web3";
-import { DummyFactory } from "../generated_wrappers/DummyFactory";
+import { DummyFactory } from "../generated_wrappers/DummyFactory"
 
 const { assert, expect } = chai;
 chai.use(chaiAsPromised);
-
-const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:9545"));
 
 contract("Dummy", (accounts: string[]) => {
   describe("#test", () => {
