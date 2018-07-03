@@ -8,19 +8,23 @@
     "truffle": "^4.1.13"
   },
   "scripts": {
-    "test": "truffle compile && typechain --force --outDir generated_wrappers './build/contracts/*.json' && tsc && truffle test"
+    "test": "truffle compile && npm run generate && tsc && truffle test",
+    "generate": "abi-gen --abis './build/contracts/*.json' --partials './types/contract_templates/partials/*.handlebars' --template './types/contract_templates/contract.handlebars' -o './types/generated_wrappers'"
   },
   "devDependencies": {
-    "@0xproject/web3-wrapper": "^0.7.1",
+    "@0xproject/abi-gen": "^0.3.2",
+    "@0xproject/base-contract": "^0.3.4",
+    "@0xproject/sol-compiler": "^0.5.2",
     "@types/ethereumjs-abi": "^0.6.0",
     "@types/ethereumjs-util": "^5.2.0",
+    "@types/fs-extra": "^5.0.3",
     "@types/lodash": "^4.14.110",
     "@types/mocha": "^5.2.3",
     "@types/node": "^10.3.6",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "ethereumjs-abi": "^0.6.5",
-    "ethereumjs-util": "^5.2.0",
+    "ethereum-types": "0.0.2",
+    "fs-extra": "^6.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
     "lodash": "^4.17.10",
@@ -28,7 +32,6 @@
     "moment": "^2.22.2",
     "prettier": "1.13.6",
     "tslint-config-prettier": "^1.13.0",
-    "typechain": "^0.2.4",
     "web3": "^0.20.6"
   }
 }
