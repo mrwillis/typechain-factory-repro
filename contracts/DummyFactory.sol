@@ -5,7 +5,8 @@ import "./Dummy.sol";
 contract DummyFactory {
 
     event NewDummy(
-        address dummyAddress
+        address dummyAddress,
+        string a
     );
 
     /**
@@ -29,7 +30,7 @@ contract DummyFactory {
             e
         );
 
-        emit NewDummy(dummy);
+        emit NewDummy(dummy, "help");
 
         return dummy;
     }
