@@ -4,6 +4,8 @@ import "./Dummy.sol";
 
 contract DummyFactory {
 
+    event DummyEvent(address dummyAddress);
+
     /**
      * @notice Factory method to make a new solidity contract
      */
@@ -24,6 +26,7 @@ contract DummyFactory {
             d,
             e
         );
+        emit DummyEvent(dummy);
         return dummy;
     }
 

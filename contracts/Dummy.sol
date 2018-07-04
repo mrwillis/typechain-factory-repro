@@ -5,7 +5,7 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 contract Dummy {
     using SafeMath for uint256;
 
-    address public problem;
+    address private problem;
 
     constructor(
         address a,

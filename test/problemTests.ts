@@ -3,7 +3,7 @@ import chai from "chai";
 import chaiAsPromised from "chai-as-promised";
 import "mocha";
 import moment from "moment";
-import { DummyFactory } from "../generated_wrappers/DummyFactory"
+import { DummyFactory } from "../generated_wrappers/DummyFactory";
 
 const { assert, expect } = chai;
 chai.use(chaiAsPromised);
@@ -30,11 +30,22 @@ contract("Dummy", (accounts: string[]) => {
           .unix()
       );
 
-      await tx.send({ from: accounts[0] });
+      const truffleTx = await factory.newDummy(
+        accounts[0],
+        accounts[1],
+        [accounts[2], accounts[3]],
+        [new BigNumber(50), new BigNumber(50)],
+        moment()
+          .add(8, "week")
+          .unix()
+      );
+      console.log(truffleTx.logs[0].args)
+
+      // await tx.send({ from: accounts[0] });
     });
 
     it("compiles", async () => {
-      assert.equal(true,true)
-    })
+      assert.equal(true, true);
+    });
   });
 });
